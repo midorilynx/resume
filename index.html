@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    
+</head>
+
+<body>
+    <div class="loader"></div>
+
+ <div class="blackfire">
+  
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+</div>
+  
+
+    <header class="header">
+        <a href="#" class="logo">Mahanand Adimulam</a>
+        <div class="menu">
+            <div class="btn">
+                <i class="fas fa-times close-btn "></i>
+            </div>
+            <a href="#" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#pskills">Skills</a>
+            <a href="#aexp">Experience</a>
+            <a href="#projectss">Projects</a>
+            <a href="#contact-sec">Contact</a>
+        </div>
+        <div class="btn">
+            <i class="fas fa-bars menu-btn"></i>
+        </div>
+    </header>
+
+    <section class="home">
+        <div class="home-content">
+            <h1>Hi, I'm <span class="name">Mahanand Adimulam</span></h1>
+            <h3><span id="like">
+                I like to
+            </span>
+            <span id="typewriter">code</span><span id="cursor">|</span></h3>
+            <div class="btn-box">
+                <a href="images/Mahanand_Adimulam_Resume .pdf" target="_blank">Download Resume</a>
+            </div>
+
+        </div>
+
+        <div class="home-sci">
+            <a href="https://github.com/MahanandAdimulam" target="_blank"><i class='bx bxl-github' ></i></a>
+            <a href="https://www.instagram.com/mahanand_/?igshid=NTc4MTIwNjQ2YQ%3D%3D" target="_blank"><i class='bx bxl-instagram'></i></i></a>
+            <a href="https://www.linkedin.com/in/mahanand-adimulam/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+        </div>
+    </section>
+    
+    <script>
+        window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  loader.classList.add("loader--hidden");
+
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild(loader);
+  });
+});
+
+    </script>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+    </script>
+
+    <script>
+        function sleep(ms) {
+            return new Promise((resolve) => setTimeout(resolve,ms));
+        }
+
+        const phrases = ["code.", "game.", "develop.", "sketch.", "travel."];
+        const el = document.getElementById("typewriter")
+
+        let sleepTime = 100;
+
+        let curPhraseIndex = 0;
+
+        const writeLoop = async () => {
+            while (true) {
+                let curWord = phrases[curPhraseIndex];
+                console.log(curWord);
+
+                for (let i =0; i < curWord.length; i++) {
+                    el.innerText = curWord.substring(0, i + 1);
+                    await sleep(sleepTime);
+                }
+
+                await sleep(sleepTime * 10);
+
+                for (let i =curWord.length; i > 0; i--) {
+                    el.innerText = curWord.substring(0, i - 1);
+                    await sleep(sleepTime);
+                }
+
+                await sleep(sleepTime * 5);
+
+                if (curPhraseIndex === phrases.length - 1) {
+                    curPhraseIndex = 0;
+                } else {
+                    curPhraseIndex++;
+                }
+            }
+        };
+
+        writeLoop();
+    </script>
+
+    <script>
+        const coords = { x: 0, y: 0 };
+const circles = document.querySelectorAll(".circle");
+
+const blackfire = document.querySelector(".blackfire");
+
+circles.forEach(function (circle, index) {
+  circle.x = 0;
+  circle.y = 0;
+  circle.style.backgroundColor = "#00abf0";
+});
+
+window.addEventListener("mousemove", function (e) {
+  coords.x = e.clientX;
+  coords.y = e.clientY;
+});
+
+function animateCircles() {
+  let x = coords.x;
+  let y = coords.y;
+
+  blackfire.style.top = x;
+  blackfire.style.left = y;
+  
+  circles.forEach(function (circle, index) {
+    circle.style.left = x - 12 + "px";
+    circle.style.top = y - 12 + "px";
+
+    circle.style.scale = (circles.length - index) / circles.length;
+
+    circle.x = x;
+    circle.y = y;
+
+    const nextCircle = circles[index + 1] || circles[0];
+    x += (nextCircle.x - x) * 0.3;
+    y += (nextCircle.y - y) * 0.3;
+  });
+
+  requestAnimationFrame(animateCircles);
+}
+
+animateCircles();
+
+    </script>
+    
+    <script>
+        var menu = document.querySelector('.menu');
+        var menuBtn = document.querySelector('.menu-btn');
+        var closeBtn = document.querySelector('.close-btn');
+
+        menuBtn.addEventListener("click", () => {
+            menu.classList.add('active');
+        });
+
+        closeBtn.addEventListener("click", () => {
+            menu.classList.remove('active');
+        })
+    </script> 
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                    <h1><span class="abome">About</span> Me</h1>
+                    <div class="about-text">
+                        <div class="first-line">
+                            <h3>Hi there! I'm <span class="aname">Mahanand</span>, a passionate individual with a diverse range of interests. 
+                        </div>
+                            <br>
+                            <div class="second-line">
+                                Coding and developing are at the heart of my world, where I love turning ideas into digital realities. When I'm not immersed in lines of code, you'll find me sketching away, capturing the beauty of the world on paper. <br> 
+                            But that's not all—I also have a competitive side, and you can often catch me on the badminton court, where I thrive on the excitement of the game and the camaraderie it brings. 
+                            </div>
+                            <br>
+                            <div class="third-line">Embracing creativity, technology, and sportsmanship, I'm always seeking new challenges and opportunities to make a positive impact. Let's connect and create something amazing together!</h3></div>
+                    </div>
+                    
+                    <div id="pskills">
+                        <div class="acad-cont">
+                            <div class="acad">
+                            <h1><span class="acade">Programming</span> Skills</h1>
+                          </div>
+                          <div class="container">
+                            <div class="skill-box">
+                                <span class="title">Python</span>
+                                <div class="skill-bar">
+                                    <span class="skill-per html">
+                                        <span class="tooltip">90%</span>
+                                    </span>
+                                </div>
+                            <div class="skill-box">
+                                <span class="title">SQL</span>
+                                <div class="skill-bar">
+                                    <span class="skill-per css">
+                                        <span class="tooltip">70%</span>
+                                    </span>
+                            </div>
+                            <div class="skill-box">
+                                <span class="title">Java</span>
+                                <div class="skill-bar">
+                                    <span class="skill-per javascript">
+                                        <span class="tooltip">50%</span>
+                                    </span>
+                            </div>
+                            <div class="skill-box">
+                                <span class="title">R Language</span>
+                                <div class="skill-bar">
+                                    <span class="skill-per R">
+                                        <span class="tooltip">60%</span>
+                                    </span>
+                                    <div class="skill-box">
+                                        <span class="title">C</span>
+                                        <div class="skill-bar">
+                                            <span class="skill-per C">
+                                                <span class="tooltip">70%</span>
+                                            </span>
+                                            <div class="skill-box">
+                                                <span class="title">C++</span>
+                                                <div class="skill-bar">
+                                                    <span class="skill-per C2">
+                                                        <span class="tooltip">70%</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>                    
+                                    </div>
+                            </div>
+                    </div>
+
+                        <div id="aexp">
+                            <h1><span class="acade">Academic</span> Experience</h1>
+                        <div class="Exp-wrapper">
+                            <div class="center-line">
+                            </div>
+                            <div class="row row-1">
+                              <section>
+                                <i class='icon bx bxs-graduation'></i>
+                                <div class="details">
+                                  <span class="title">Rochester Institute of Technology</span>
+                                  <span>Expected May 2024</span>
+                                </div>
+                                <p>
+                                  Master of Science in Data Science, <span class="gpa-1">3.9 GPA</span> <br>
+                                  <br>
+                                  Related courses: Foundations of Data Science, Applied Statistics, Software Construction.
+                                </p>
+                                <div class="bottom">
+                                  <i> Rochester, NY</i>
+                                </div>
+                              </section>
+                            </div>
+                            <div class="row row-2">
+                              <section>
+                                <i class="icon fa fa-university"></i>
+                                <div class="details">
+                                  <span class="title">Kalinga Institute of Industrial Technology,  
+                                    </span>
+                                  <span>May 2022</span>
+                                </div>
+                                <p>
+                                  Bachelor of Technology (Honors) in Electronics and Computer Science Engineering, <span class="gpa">3.7 GPA</span>
+                                </p>
+                                <div class="bottom">
+                                  <i>Bhubaneswar, India</i>
+                                </div>
+                              </section>
+                            </div>
+                            <div class="row row-1">
+                              <section>
+                                <i class='icon bx bx-chalkboard'></i>
+                                <div class="details">
+                                  <span class="title">Golisano College Of Computing and Information Sciences</span>
+                                  <span>Jan 2023</span>
+                                </div>
+                                <p>•Tutoring for subjects Computational Thinking and Solving, Software Development and Problem Solving I and Software
+                                  Development and Problem Solving II.
+                                  <br>
+                                  <br>
+                                  • Assisting students in understanding complex programming concepts and provide guidance on assignments and projects.
+                                  <br>
+                                  <br>
+                                  • Helping students to gain confidence in themselves by assisting them in reaching to the solution by themselves.</p>
+                                <div class="bottom">
+                                  <i>Rochester, NY</i>
+                                </div>
+                              </section>
+                            </div>
+                            <div class="row row-2">
+                              <section>
+                                <i class="icon fas fa-globe"></i>
+                                <div class="details">
+                                  <span class="title">HighRadius</span>
+                                  <span>Jan – March 2021</span>
+                                </div>
+                                <p>
+                                  Full Stack Developer Intern
+                                    <br>
+                                    <br>
+                                    Developed a project to predict the close date of the invoice and manage more than 50K invoices.
+                                    <br><br>
+                                    • Carried out EDA in Jupiter notebook to provide insights about the invoices.
+                                    <br><br>
+                                    • Built models based on Decision Tree Regressor, and Random Forest to predict the close date of the invoice.
+                                    <br><br>
+                                    • Implemented email notification functionality in the main framework in case of invalid login password used portal.
+                                    <br><br>
+                                    • Created the frontpage of the application using HTML, CSS, React and JavaScript.
+                                    <br><br>
+                                    • Maintained the backend of 50K+ invoices using Java Servlets, MySQL.
+                                </p>
+                                <div class="bottom">
+                                  <i>Bhubaneswar, India</i>
+                                </div>
+                              </section>
+                            </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+
+        <section>
+          <br><br>
+          <h1 id="projectss" class="project-header"><span class="project-lol"><span class="acade">Projects</span> / Works</span></h1>
+          <br><br><br>
+        <div class="project-text">
+          <h2 class="project-header"><span class="acade">AlexNet: An Exploration of CNNs, </span>Rochester Institute of Technology</h2>
+          <br>
+          <span class="project-1">August 2022 – December 2022</span>
+          <br>
+          <div class="project-text">
+            <h3>
+              Compare Self written implementation of AlexNet with pretrained models of Keras and subclassify whole and cut pizzas.
+              <br><br>
+              • Worked with pre-trained models of ResNet50, InceptionV3 and the self-written AlexNet models on ImageNet dataset.
+              <br><br>
+              • Compared the results to find that the pretrained models performed better than AlexNet by 30% accuracy.
+              <br><br>
+              • Subclassified whole and cut pizzas using transfer learning for ResNet50, InceptionV3 and AlexNet models
+              <br><br><br>
+            </h3>
+          </div>
+
+          <h2 class="project-header"><span class="acade">Health Care Application, </span>Kalinga Institute of Industrial Technology</h2>
+          <br>
+          <span class="project-1">July 2021 - March 2022</span>
+          <br>
+          <h3>
+            Developed an application which predicts the disease the user is suffering from based on the symptoms entered.
+            <br><br>
+            • Carried out EDA in Jupiter notebook to provide insights about the diseases.
+            <br><br>
+            • Built models based on Decision Tree Regressor, and Random Forest to predicts the disease using symptoms.
+            <br><br>
+            • Developed an application where the user can input their symptoms and predict the potential disease.
+            <br><br>
+            • Linked the application with a healthcare website where the patient can connect with nearest doctors in their city.
+            <br><br>
+          </h3>
+        </div>
+        </section>
+
+        <div id="contact-sec" class="contact-section">
+
+          <h1><span class="contact-me"><span class="acade">Contact</span> Me</span></h1>
+          <div class="border"></div>
+          <form class="contact-form" action="https://formsubmit.co/4b5dceda7c74d99aff554f700bd11bec" method="post">
+            <input type="text" class="contact-form-text" name="Name" placeholder="Your name">
+            <input type="email" class="contact-form-text" name="Email" placeholder="Your email">
+            <input type="text" class="contact-form-text" name="Phone" placeholder="Your phone">
+            <textarea class="contact-form-text" name="TEXT" placeholder="Your message"></textarea>
+            <input type="submit" class="contact-form-btn" value="Send">
+          </form>
+        </div>
+        
+</body>
+</html>
